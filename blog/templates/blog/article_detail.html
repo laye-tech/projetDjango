@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ article.titre }}{% endblock %}
+
+{% block content %}
+    <div class="card">
+        {% if article.image %}
+            <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.titre }}">
+        {% endif %}
+        <div class="card-body">
+            <h1 class="card-title">{{ article.titre }}</h1>
+            <p class="text-muted">Publié par {{ article.auteur }} le {{ article.date_publication|date:"d/m/Y" }}</p>
+            <p class="card-text">{{ article.contenu }}</p>
+            <a href="{% url 'article_list' %}" class="btn btn-secondary">Retour</a>
+        </div>
+    </div>
+{% endblock %}
